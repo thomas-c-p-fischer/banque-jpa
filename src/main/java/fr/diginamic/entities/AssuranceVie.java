@@ -38,7 +38,7 @@ public class AssuranceVie extends AbstractCompte {
 	 * @param dateFin
 	 * @param taux
 	 */
-	public AssuranceVie(Date dateFin, double taux) {
+	public AssuranceVie() {
 	}
 
 	@Override
@@ -86,5 +86,19 @@ public class AssuranceVie extends AbstractCompte {
 	 */
 	public List<Virement> getVirements() {
 		return virements;
+	}
+
+	/** Setter
+	 * @param client the client to set
+	 */
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	/** Setter
+	 * @param virements the virements to set
+	 */
+	public void setVirements(List<Virement> virements) {
+		this.virements = virements;
 	}
 }

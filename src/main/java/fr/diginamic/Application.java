@@ -17,6 +17,7 @@ import fr.diginamic.entities.AssuranceVie;
 import fr.diginamic.entities.Banque;
 import fr.diginamic.entities.Client;
 import fr.diginamic.entities.LivretA;
+import fr.diginamic.entities.Virement;
 
 /**
  * 
@@ -34,9 +35,9 @@ public class Application {
 		Adresse adresse = new Adresse(17, "beaucaire", "paris", "75000");
 		List<Client> clients = new ArrayList<Client>();
 		List<Banque> banques = new ArrayList<Banque>();
+		List<Virement> virementsAssuranceVie = new ArrayList<Virement>();
+		List<Virement> virementsLivret = new ArrayList<Virement>();
 		transaction.begin();
-		
-		
 		
 		
 		
@@ -56,7 +57,32 @@ public class Application {
 		livretA.setSolde("-150,20€");
 		livretA.setTaux(2.5);
 		livretA.setClient(client);
+		AssuranceVie assuranceVie = new AssuranceVie();
+		assuranceVie.setClient(client);
+		assuranceVie.setDateFin(new java.util.Date(150, 7, 6));
+		assuranceVie.setNumero("654874654684");
+		assuranceVie.setSolde("1500€");
+		assuranceVie.setTaux(1.2);
+		Virement virement = new Virement();
+		virement.setAssuranceVie(assuranceVie);
+		virement.setBeneficiare("soeur");
+		virement.setDate(new java.util.Date());
+		virement.setMontant(150.5);
+		virement.setMotif("Cadeaux");
+		virementsAssuranceVie.add(virement);
+		assuranceVie.setVirements(virementsAssuranceVie);
+		Virement virement1 = new Virement();
+		virement1.setLivretA(livretA);
+		virement1.setBeneficiare("frere");
+		virement1.setDate(new java.util.Date());
+		virement1.setMontant(178.5);
+		virement1.setMotif("remboursement");
+		virementsLivret.add(virement1);
+		livretA.setVirements(virementsLivret);
 		
+		em.persist(virement);
+		em.persist(virement1);
+		em.persist(assuranceVie);
 		em.persist(livretA);
 		em.persist(banque);
 		em.persist(client);

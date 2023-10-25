@@ -60,4 +60,18 @@ public class Virement extends AbstractOperation {
 	public LivretA getLivretA() {
 		return livretA;
 	}
+
+	/** Setter
+	 * @param assuranceVie the assuranceVie to set
+	 */
+	public void setAssuranceVie(AssuranceVie assuranceVie) {
+		this.assuranceVie = assuranceVie;
+	}
+
+	/** Setter
+	 * @param livretA the livretA to set
+	 */
+	public void setLivretA(LivretA livretA) {
+		this.livretA = livretA;
+	}
 }
